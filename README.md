@@ -5,7 +5,7 @@
 - The vulnerability resides in the code of **copy-on-write (COW)** inside Linux kernel. By exploiting this vulnerability, attackers can modify any protected file, even though these files are only readable to them.
 
 ## Explanation
--`mmap()` allows mapping a file on the disk to the memory. Once the file is mapped to the memory, the reading and writing to the file is similar to the files in the memory. But this is possible only if the file was write access to the user.
+- `mmap()` allows mapping a file on the disk to the memory. Once the file is mapped to the memory, the reading and writing to the file is similar to the files in the memory. But this is possible only if the file was write access to the user.
 - Once the file is mapped, it can be read via the mapped memory and can be written to using `memcpy()` 
 - On closing the file, the content is stored to the disk.
 - But if the file has only read access and not write access, the new content is written to a private copy of the file in the memory and the original write protected file will not be modified at the end.
